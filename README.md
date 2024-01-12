@@ -1,6 +1,8 @@
 # site_comunidade_bacalhau
 site em homenagem a Professor Bacalhal, chamado Comunidade Bacalhal. O site é um espaço para compartilhar informações e experiências relacionadas à tecnologia da informação.
 # linguagem
+Python
+Javascript
 site construido usando o framework flask.
 biblioteca css Bulma.
 #funcionalidades:
