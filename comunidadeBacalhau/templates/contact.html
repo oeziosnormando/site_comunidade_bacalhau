@@ -1,0 +1,48 @@
+{% extends 'base.html' %}
+
+{% block body%}
+    <section class="hero">
+		<div class="hero-body">
+			<div class="container has-text-centered">
+				<div class="columns is-8 is-variable ">
+					<div class="column is-two-thirds has-text-left">
+						<h3 class="title is-3">Contato</h3>
+						<p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla eligendi soluta
+							voluptate facere molestiae consequatur.</p>
+						<div class="social-media">
+							<a href="https://facebook.com" target="_blank" class="button is-light is-large"><span class="icon"><i class="fab fa-instagram"></i>
+              </span></a>
+							<a href="https://instagram.com" target="_blank" class="button is-light is-large"><span class="icon"><i class="fab fa-github"></i>
+              </span></a>
+							<a href="https://twitter.com" target="_blank" class="button is-light is-large"><span class="icon"><i class="fab fa-twitter"></i>
+              </span></a>
+						</div>
+					</div>
+					<div class="column is-one-third has-text-left">
+						<div class="field">
+							<label class="label">Nome</label>
+							<div class="control">
+								<input class="input" type="text">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">E-mail</label>
+							<div class="control">
+								<input class="input" type="text">
+							</div>
+						</div>
+						<div class="field">
+							<label class="label">Mensagem</label>
+							<div class="control">
+								<textarea class="textarea"></textarea>
+							</div>
+						</div>
+						<div class="control">
+							<button type="submit" class="button is-link is-fullwidth has-text-weight-medium is-medium">Enviar Mensagem</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+{% endblock body %}

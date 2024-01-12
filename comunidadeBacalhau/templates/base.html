@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Comunidade Bacalhau</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <link rel="shortcut icon" href="{{ url_for('static', filename='favicon-16x16.png') }}">
+    <link rel="icon" type="image/png" sizes="16x16"  href="/favicons/favicon-16x16.png">
+    <meta name="msapplication-TileColor" content="#ffffff">
+    <meta name="theme-color" content="#ffffff">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script type="text/javascript" src="{{ url_for('static', filename='js/script.js') }}"> </script>
+    {% block head %}{% endblock head %}
+  </head>
+
+  <header>
+    <nav class="navbar is-light" role="navigation" aria-label="main navigation">
+      <div class="container is-fluid">
+        <div class="navbar-brand">
+          <a class="navbar-item " href="{{ url_for('home') }}">
+            <img src="{{ url_for('static', filename='image/camarao1.svg') }}"/>
+          </a>
+
+          <a role="button" class="navbar-burger" data-target="navMenu" aria-label="menu" aria-expanded="false">
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+            <span aria-hidden="true"></span>
+          </a>
+        </div>
+
+        <div class="navbar-menu" id="navMenu">
+          <div class="navbar-start">
+            <a class="navbar-item " href="{{ url_for('home') }}">
+              Homepage
+            </a>
+            <a class="navbar-item" href="{{ url_for('users') }}">
+              Users
+            </a>
+            <a class="navbar-item" href="{{ url_for('courses') }}">
+              Courses
+            </a>
+            <div class="navbar-item has-dropdown is-hoverable">
+              <a class="navbar-link">
+                More
+              </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="{{ url_for('about') }}">
+                  About
+                </a>
+                <a class="navbar-item">
+                  Jobs
+                </a>
+                <a class="navbar-item" href="{{ url_for('contact') }}">
+                  Contact
+                </a>
+              </div>
+            </div>
+          </div>
+          {% if current_user.is_authenticated %}
+          <div class="navbar-end">
+            <div class="navbar-item has-dropdown is-hoverable">
+                <a class="navbar-link" >
+                  Create
+                </a>
+              <div class="navbar-dropdown">
+                <a class="navbar-item" href="{{ url_for('create_post') }}" >
+                  Post
+                </a>
+                 <a class="navbar-item" href="#">
+                  Course
+                </a>
+              </div>
+            </div>
+            <a class="navbar-item has-text-link" href="{{ url_for('profile') }}">
+                  Profile
+            </a>
+            <a class="navbar-item has-text-danger-dark " href="{{ url_for('logout') }}">
+                  Logout
+            </a>
+            {% else %}
+            <div class="navbar-item">
+              <div class="buttons">
+                <a class="button" href="{{ url_for('signup') }}">
+                  <strong>Sign up</strong>
+                </a>
+                <a class="button is-info is-light" href="{{ url_for('login') }}">
+                  Log in
+                </a>
+              </div>
+            </div>
+            {% endif%}
+          </div>
+        </div>
+      </div>
+    </nav>
+    {% block header %}{% endblock header %}
+  </header>
+<body>
+<div class="container is-4 is-offset-4">
+  {% with mensagens = get_flashed_messages(with_categories=true)%}
+    {% if mensagens %}
+      {% for categoria, mensagem in mensagens %}
+        <div class="notification is-success {{ categoria }}">
+          {{ mensagem }}
+        </div>
+      {% endfor %}
+    {% endif %}
+  {% endwith %}
+</div>
+
+{% block body %}{% endblock body %}
+
+<footer class="footer">
+    <div class="content has-text-centered">
+      <p>
+        <strong>Bulma</strong> by <a href="https://jgthms.com">Jeremy Thomas</a>. The source code is licensed
+        <a href="http://opensource.org/licenses/mit-license.php">MIT</a>. The website content
+        is licensed <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+      </p>
+    </div>
+  </footer>
+
+{% block footer%}{% endblock footer %}
+
+</body>
+</html>

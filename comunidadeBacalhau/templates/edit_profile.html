@@ -1,0 +1,69 @@
+
+{% extends 'profile.html' %}
+
+{%block edit_profile %}
+<div class="container">
+    <div class="columns is-three-quarters-mobile is-two-thirds-tablet is-half-desktop is-one-third-widescreen is-one-quarter-fullhd">
+        <div class="column">
+            <form method="POST" action="" class="box" enctype="multipart/form-data">
+                {{ form_edit_profile.csrf_token }}
+                 <article class="media">
+                      <figure class="media-left">
+                        <p class="image is-64x64">
+                          <img src="{{profile_picture}}">
+                        </p>
+                      </figure>
+                 </article>
+                    <h5 class="title is-5 mt-1">Editar Perfil</h5>
+                    <div class="field">
+                        <p class="control ">
+                            {{ form_edit_profile.username.label(class='control has-text-grey') }}
+                            {% if form_edit_profile.username.errors %}
+                                {{ form_edit_profile.username(class='input is-link') }}
+                            <div class="help is-danger">
+                                {% for erro in form_edit_profile.username.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_edit_profile.username(class='input is-info',type='user', placeholder='@oezios') }}
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control">
+                            {{ form_edit_profile.email.label(class='control has-text-grey') }}
+                            {% if form_edit_profile.email.errors %}
+                                {{ form_edit_profile.email(class='input is-info notification is-danger') }}
+                            <div class="help is-danger">
+                                {% for erro in form_edit_profile.email.errors %}
+                                    {{ erro }}
+                                {% endfor %}
+                            </div>
+                            {% else %}
+                                {{ form_edit_profile.email(class='input is-info',type='email', placeholder='oezios@gmail.com') }}
+                            {% endif %}
+                        </p>
+                    </div>
+                    <div class="field">
+                        <p class="control">
+                            {{ form_edit_profile.profile_picture.label(class='file is-link has-name file-label') }}
+                            {{ form_edit_profile.profile_picture(class='file') }}
+                            {% if form_edit_profile.profile_picture.errors %}
+                                    {% for erro in form_edit_profile.profile_picture.errors %}
+                                        <span class="help is-danger">{{ erro }}</span> <br>
+                                    {% endfor %}
+                            {% endif %}
+                        </p>
+                    </div>
+                <p class="control">
+                {{ form_edit_profile.button_submit_edit_profile(class="button is-link is-outline mt-2") }}
+                </p>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock edit_profile %}

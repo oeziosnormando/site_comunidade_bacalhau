@@ -1,0 +1,76 @@
+
+{% extends 'base.html'%}
+
+{% block body %}
+<div class="container mt-6">
+    <div class="columns ">
+        <div class="column is-4 is-offset-4">
+            <form action="" method="post" class="box" >
+                {{form_login.csrf_token}}
+                <h3 class="title is-3">Log in</h3>
+
+                <div class="field is-centered">
+                    <div class="control">
+                        {{form_login.email.label(class='control has-text-grey')}}
+                        <!--mensagem de erros-->
+                        {% if form_login.email.errors %}
+                            {{ form_login.email(class='input is info notification is-danger')}}
+                        <div class="help is-danger">
+                            {% for error in form_login.email.errors %}
+                                <span class="help is-danger">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{form_login.email(class='input is-info',type='email', placeholder='oezios@gmail.com')}}
+                        {% endif %}<!--fim mensagem de erros-->
+                    </div>
+                </div>
+
+                <div class="field">
+                    <div class="control">
+                        {{form_login.password.label(class='control has-text-grey')}}
+                        <!--mensagem de erros-->
+                        {% if form_login.password.errors %}
+                            {{ form_login.password(class='input is info notification is-danger')}}
+                        <div class="help is-danger">
+                            {% for error in form_login.password.errors %}
+                                <span class="help is-danger">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form_login.password(placeholder="********",class="input",type="password") }}
+                        {% endif %}
+                         <!--fim mensagem de erros-->
+                    </div>
+                </div>
+
+                <div class="field">
+                  <div class="control">
+                      {{ form_login.remember_password.label() }}
+
+                      {{ form_login.remember_password(class="checkbox") }}
+                  </div>
+                </div>
+
+                <div class="field has-text-left ">
+                    <p class="control">
+                        <button class="button is-focused">
+                            Log in
+                        </button>
+                    </p>
+                </div>
+
+                <div class="field ">
+                    <p class="control">
+                    No account? Please <a href="{{ url_for('signup') }}">Sign up</a>
+                    </p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+
+
+{% endblock body%}

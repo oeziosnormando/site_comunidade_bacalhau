@@ -1,0 +1,52 @@
+{% extends 'base.html' %}
+
+
+{% block body %}
+    <div class="hero">
+        <div class="hero-body">
+            <div class="container">
+                <h5 class="title is-5">Olá, {{ current_user.username }}!</h5>
+                <h4 class="title is-4">Comunidade Bacalhau</h4>
+                {% for user in list_users %}
+                    <article class="media">
+                        <div class="media-left">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <!-- chamando a variavel profile_picture da minha routes
+                                    e passando o caminho para a imagem de perfil-->
+                                    <img src="{{ url_for('static', filename='fotos_perfil/{}'.format(user.profile_picture)) }}">
+                                </p>
+                            </figure>
+                        </div>
+                        <div class="media-content">
+                            <div class="content">
+                                <p>
+                                    <strong>{{ user.username }}</strong> <small><strong>{{user.email }}</strong></small><br>
+                                    <a><small>{{user.courses.count('{{ user.courses }}') }}</small> courses</a> <br>
+                                    <a><small>{{user.posts.count('{{ user.posts }}') }}</small> posts</a><br>
+                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa
+                                    fringilla egestas. Nullam condimentum luctus turpis.
+                                </p>
+                            </div>
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                    <a class="level-item" aria-label="reply">
+                                        <span class="icon is-small"> <i class="fas fa-reply"></i> </span>
+                                    </a>
+                                    <a class="level-item" aria-label="retweet">
+                                        <span class="icon is-small"> <i class="fas fa-retweet"></i> </span>
+                                    </a>
+                                    <a class="level-item" aria-label="like">
+                                        <span class="icon is-small"> <i class="fas fa-heart"></i> </span>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+                    </article>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+
+{% endblock body %}

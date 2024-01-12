@@ -1,0 +1,103 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<div class="container mt-6">
+    <div class="columns">
+        <div class="column is-4 is-offset-4">
+            <form action="" method="post" class="box" >
+                {{form_criarconta.csrf_token}}
+                <h3 class="title is-3">Sign up</h3>
+
+                <div class="field is-centered">
+                    <p class="control">
+                        {{ form_criarconta.username.label(class='control has-text-gray') }}
+                        <!--mensagem de erros-->
+                        {% if form_criarconta.username.errors %}
+                            {{ form_criarconta.username(class='input is info notification is-danger')}}
+                        <div class="help is-danger">
+                            {% for error in form_criarconta.username.errors %}
+                                <span class="help is-danger">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form_criarconta.username(class='input is-info',type='user', placeholder='@oezios') }}
+                        {% endif %}
+                    <!--fim mensagem de erros-->
+                    </p>
+                </div>
+
+                <div class="field is-centered">
+                    <p class="control has-icons-right">
+                        {{ form_criarconta.email.label(class='control has-text-gray') }}
+                        <!--mensagem de erros-->
+                        {% if form_criarconta.email.errors %}
+                            {{ form_criarconta.email(class='input is info notification is-danger')}}
+                        <div class="help is-danger">
+                            {% for error in form_criarconta.email.errors %}
+                                <span class="help is-danger">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form_criarconta.email(class='input is-info',type='email', placeholder='oezios@gmail.com')}}
+                        {% endif %}
+                    <!--fim mensagem de erros-->
+                    </p>
+                </div>
+
+                <div class="field">
+                    <p class="control has-icons-right">
+                        {{ form_criarconta.password.label(class='control has-text-gray') }}
+                        <!--mensagem de erros-->
+                        {% if form_criarconta.password.errors %}
+                            {{ form_criarconta.password(class='input is info notification is-danger')}}
+                        <div class="help is-danger">
+                            {% for error in form_criarconta.password.errors %}
+                                <span class="help is-danger">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form_criarconta.password(class='input is-info',type='password', placeholder='********') }}
+                        {% endif %}
+                    <!--fim mensagem de erros-->
+                    </p>
+                </div>
+
+                <div class="field">
+                    <p class="control has-icons-right">
+                        {{ form_criarconta.confirm_password.label(class='control has-text-gray') }}
+                        <!--mensagem de erros-->
+                        {% if form_criarconta.confirm_password.errors %}
+                            {{ form_criarconta.confirm_password(class='input is info notification is-danger')}}
+                        <div class="help is-danger">
+                            {% for error in form_criarconta.confirm_password.errors %}
+                                <span class="help is-danger">{{ error }}</span>
+                            {% endfor %}
+                        </div>
+                        {% else %}
+                            {{ form_criarconta.confirm_password(class='input is-info',type='password', placeholder='********') }}
+                        {% endif %}
+                    <!--fim mensagem de erros-->
+                    </p>
+                </div>
+
+                <div class="field has-text-left ">
+                    <p class="control">
+                        <button class="button is-focused">
+                            Sign up
+                        </button>
+                    </p>
+                </div>
+
+                <div class="field">
+                    <p class="control">
+                    Already have an account? Please <a href="{{ url_for('login') }}">Log in</a>
+                    </p>
+                </div>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+{% endblock body %}
