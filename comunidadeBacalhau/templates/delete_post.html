@@ -1,0 +1,23 @@
+
+{% block delete_post %}
+<!--Modal de editar post-->
+<div id="modal-js-delete"class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head ">
+            <p class="modal-card-title is-size-6">Vai excluir seu post? {{ current_user.username }}</p>
+            <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+            <!-- Content ... -->
+            <form action="{{url_for('delete_post', post_id=post.id)}}" method="post">
+                <p class="has-text-grey is-size-7-mobile mb-1">Quer mesmo <strong class="has-text-danger">Excluir</strong>seu post? 
+                    <br> Esta ação não poderá ser desfeita!
+                </p>
+                <button class="button is-danger" type="submit">Excluir</button>
+                <button class="button">Cancelar</button>
+            </form>
+        </section>
+    </div>
+</div>
+{% endblock delete_post %}

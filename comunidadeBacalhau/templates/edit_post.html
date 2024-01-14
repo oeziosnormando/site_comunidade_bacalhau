@@ -1,0 +1,61 @@
+
+{% block form_edit %}
+<!--Modal de editar post-->
+<div id="modal-js-example"class="modal">
+    <div class="modal-background"></div>
+    <div class="modal-card">
+        <header class="modal-card-head ">
+        <p class="modal-card-title is-size-5">Reescreva seu Post! {{ current_user.username }}</p>
+        <button class="delete" aria-label="close"></button>
+        </header>
+        <section class="modal-card-body">
+        <!-- Content ... -->
+        <p class="subtitle is-6">Comunidade de tecnologia dedicada a promover o aprendizado e a colaboração entre profissionais e estudantes de tecnologia.</p>
+            <article class="media">
+                <figure class="media-left">
+                <p class="image is-64x64">
+                    <img src=" {{ url_for('static', filename='fotos_perfil/{}'.format(current_user.profile_picture)) }} ">
+                </p>
+                </figure>
+                <div class="media-content">
+                    <form method="POST" action="">
+                        {{ form_edit.csrf_token }}
+                        <div class="field">
+                            <div class="control ">
+                                {{ form_edit.title.label(class='control has-text-grey') }}
+                                {% if form_edit.title.errors %}
+                                    {{ form_edit.title(class='control is-link') }}
+                                    <div class="help is-danger">
+                                        {% for erro in form_edit.title.errors %}
+                                            {{ erro }}
+                                        {% endfor %}
+                                    </div>
+                                {% else %}
+                                    {{ form_edit.title(class='input is-info', placeholder='Titulo do texto') }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <div class="field">
+                            <div class="control ">
+                                {{ form_edit.content.label(class='control has-text-grey') }}
+                                {% if form_edit.content.errors %}
+                                    {{ form_edit.content(class='control is-link') }}
+                                <div class="help is-danger">
+                                    {% for erro in form_edit.content.errors %}
+                                        {{ erro }}
+                                    {% endfor %}
+                                </div>
+                                {% else %}
+                                    {{ form_edit.content(class='textarea is-small is-link', placeholder='Escreva o seu post...') }}
+                                {% endif %}
+                            </div>
+                        </div>
+                        <span>{{ form_edit.button_submit_edit_post(class="button is-success ") }}</span>
+                        <button class="button">Cancelar</button>
+                    </form>
+                </div>
+            </article>
+        </section>
+    </div>
+</div>
+{% endblock form_edit %}

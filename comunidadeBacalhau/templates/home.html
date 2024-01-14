@@ -7,10 +7,10 @@
         <div class="columns">
             <div class="column is-8">
                 <p class="title is-3">
-                  Hello Srs.(a) {{current_user.username}}, welcome!
+                  Olá Sr.(a) {{current_user.username}}, Bem-vindo(a)!
                 </p>
-                <p class="subtitle ">
-                  To the first <strong>Bacalhau Community </strong>website!
+                <p class="subtitle mt-3 ">
+                  A <strong>Comunidade Bacalhau </strong> website!
                 </p>
             </div>
             <div class="column is-4">
@@ -26,8 +26,7 @@
 </div>
 <div class="section">
     <div class="container">
-        <p class="title is-4 ">Comunidade Bacalhau</p>
-        <p class="subtitle is-5 mt-5">Postagens</p>
+        <p class="subtitle is-5">Postagens</p>
         <div class="tile is-ancestor">
           <div class="tile is-vertical is-parent">
             {% for post in posts %}
@@ -51,9 +50,9 @@
                   </div>
 
                   <div class="content mt-2">
-                      <!-- link display post visualizar o post-->
-                      <a href="{{url_for('display_post', post_id=post.id)}}"><p class="subtitle mb-2 is-5 has-text-link">{{ post.title}}</p></a>
-                    <p>{{ post.content }}<br><a>@comunidade bacalhau.</a><br>
+                      <!-- link display_post view do post-->
+                      <a href="{{url_for('display_post', post_id=post.id)}}"><p class="subtitle is-6 mb-2 has-text-link">{{ post.title}}</p></a>
+                    <p>{{ post.content }}<br><a>@comunidade bacalhau </a>
                         <a href="https://bulma.io">#Bulma</a> <a href="https://flask.palletsprojects.com/en/3.0.x/">#flask</a>
                         <a href="https://www.python.org/">#python</a> </p>
                     <time datetime="2016-1-1">{{post.created_at.strftime('%Y-%m-%d %H:%M:%S')}}</time>
@@ -95,7 +94,7 @@
                               </div>
                               <div class="content mt-2">
                                   <!--link display post visualizar o post-->
-                                <a href="{{url_for('display_post', post_id=post.id)}}"><p class="subtitle mb-2 is-6 has-text-link">{{ post.title}}</p></a>
+                                <a href="{{url_for('display_post', post_id=post.id)}}"><p class="subtitle is-6 mb-2 has-text-link">{{ post.title}}</p></a>
                                 <a>@comunidade bacalhau.</a><br>
                                 <a href="https://bulma.io">#Bulma</a> <a href="https://flask.palletsprojects.com/en/3.0.x/">#flask</a>
                                 <a href="https://www.python.org/">#python</a><br>

@@ -35,8 +35,8 @@ class FormResetPassword(FlaskForm):
 
 class FormEditPost(FlaskForm):
     title = StringField("Titulo", validators=[DataRequired()])
-    content = TextAreaField("Escreva seu post", validators=[DataRequired()])
-    button_submit_edit = SubmitField("Editar Post")
+    content = TextAreaField("Reescreva seu post", validators=[DataRequired()])
+    button_submit_edit_post = SubmitField("Editar Post")
 
 
 class FormCreatePost(FlaskForm):
@@ -76,3 +76,4 @@ class FormContact(FlaskForm):
     subject = StringField("Subject", validators=[DataRequired()])
     message = StringField("Message", validators=[DataRequired()])
     button_submit = SubmitField("Send")
+    

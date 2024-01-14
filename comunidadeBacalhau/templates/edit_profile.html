@@ -7,13 +7,13 @@
         <div class="column">
             <form method="POST" action="" class="box" enctype="multipart/form-data">
                 {{ form_edit_profile.csrf_token }}
-                 <article class="media">
-                      <figure class="media-left">
-                        <p class="image is-64x64">
-                          <img src="{{profile_picture}}">
-                        </p>
-                      </figure>
-                 </article>
+                <article class="media">
+                    <figure class="media-left">
+                    <p class="image is-64x64">
+                        <img src="{{profile_picture}}">
+                    </p>
+                    </figure>
+                </article>
                     <h5 class="title is-5 mt-1">Editar Perfil</h5>
                     <div class="field">
                         <p class="control ">
@@ -63,7 +63,5 @@
         </div>
     </div>
 </div>
-
-
 
 {% endblock edit_profile %}
