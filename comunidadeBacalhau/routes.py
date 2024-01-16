@@ -5,7 +5,7 @@ from PIL import Image as Image
 from flask import render_template, flash, redirect, url_for, request, abort
 from comunidadeBacalhau import app, database, bcrypt
 from comunidadeBacalhau.forms import (FormLogin, FormCriarConta, FormEditprofile, FormCreatePost, FormEditPost,
-                                      FormCreateCourse, FormEditCourse)
+                                      FormCreateCourse, FormEditCourse, FormResetPassword, FormSearch)
 from comunidadeBacalhau.models import User, Post, Course
 from flask_login import login_user, logout_user, current_user, login_required
 
@@ -51,8 +51,11 @@ def signup():
 
 # PAGE HOME
 @app.route("/")
+@app.route("/home/")
 def home():
-    posts = Post.query.order_by(Post.id.desc()).all()
+    page = request.args.get('page', 1, type=int)
+    posts = Post.query.order_by(Post.id.desc()).paginate(page=page, per_page=2)
+    
     return render_template("home.html", posts=posts)
 
 
@@ -159,7 +162,22 @@ def display_post(post_id):
     
     return render_template("post.html", post=post, form_edit=form_edit)
     
-
+    
+    
+@app.route("/results/<string:search>", methods=["GET", "POST"])
+def result(search):
+    posts = Post.query.filter(Post.title.contains(search) | Post.content.contains(search)).all()
+    for_search = FormSearch()
+    if request.method == 'GET':
+        for_search.search.data = search
+    elif for_search.validate_on_submit():
+        return redirect(url_for('result', search=for_search.search.data))
+    else:
+        for_search = None
+        
+    return render_template("results.html", posts=posts, for_search=for_search)
+    
+    
 
 # deletar o post
 @app.route("/delete_post/<int:post_id>", methods=["GET", "POST"])

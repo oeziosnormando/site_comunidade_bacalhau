@@ -45,6 +45,12 @@ class FormCreatePost(FlaskForm):
     button_submit_create_post = SubmitField("Criar Post")
 
 
+class FormSearch(FlaskForm):
+    search = StringField("Search", validators=[DataRequired()])
+    button_submit_search = SubmitField("Search")
+    
+    
+
 class FormEditCourse(FlaskForm):
     name = StringField("Name", validators=[DataRequired()])
     description = TextAreaField("Description", validators=[DataRequired()])

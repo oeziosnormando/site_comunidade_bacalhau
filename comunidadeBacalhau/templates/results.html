@@ -6,7 +6,7 @@
             <div class="container">
                 <h5 class="title is-5">Olá, {{ current_user.username }}!</h5>
                 <h4 class="title is-4">Comunidade Bacalhau</h4>
-                {% for user in list_users %}
+                {% for result in results %}
                     <article class="media">
                         <div class="media-left">
                             <figure class="media-left">
@@ -29,9 +29,6 @@
                             </div>
                             <nav class="level is-mobile">
                                 <div class="level-left">
-                                    <a class="level-item" aria-label="reply">
-                                        <span class="icon is-small"> <i class="fas fa-reply"></i> </span>
-                                    </a>
                                     <a class="level-item" aria-label="retweet">
                                         <span class="icon is-small"> <i class="fas fa-retweet"></i> </span>
                                     </a>

@@ -16,6 +16,14 @@ class User(database.Model, UserMixin):
     password = database.Column(database.String(40), nullable=False)
     profile_picture = database.Column(database.String(40), default="default.jpg", nullable=False)
     courses = database.Column(database.String(40), nullable=False, default="Não Informado")
+    
+    def count_posts(self):
+        return len(self.posts)
+    
+    
+    def count_courses(self):
+        return len(self.courses)
+    
 
 
 class Post(database.Model):

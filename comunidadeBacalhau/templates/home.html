@@ -14,12 +14,18 @@
                 </p>
             </div>
             <div class="column is-4">
-                <div class="control has-icons-right">
-                  <input class="input" type="text" placeholder="Search">
-                  <span class="icon is-small is-right">
-                    <i class="fas fa-search"></i>
-                  </span>
+              <form action="" method="get">
+                <div class="field has-addons">
+                  <div class="control">
+                    <input class="input" type="text" name="q" placeholder="Postagens...">
+                  </div>
+                  <div class="control">
+                    <a class="button is-success" type="submit">
+                      <i class="fa fa-search"> Buscar</i>
+                    </a>
+                  </div>
                 </div>
+              </form>
             </div>
         </div>
   </div>
@@ -29,7 +35,7 @@
         <p class="subtitle is-5">Postagens</p>
         <div class="tile is-ancestor">
           <div class="tile is-vertical is-parent">
-            {% for post in posts %}
+            {% for post in posts.items %}
             <div class="tile is-child box">
                 <div class="card-image">
                   <figure class="image is-480x320">
@@ -73,6 +79,24 @@
                 </div>
               </div>
             {% endfor %}
+            <!--paginação do site -->
+              <nav class="pagination is-centered" role="navigation" aria-label="pagination">
+                {% for page_num in posts.iter_pages(left_edge=1, right_edge=1, left_current=1, right_current=3) %}
+                  {% if page_num %}
+                      <ul class="pagination-list">
+                        {% if page_num == posts.page %}
+                        <li><a class="pagination-link is-current" href="{{ url_for('home', page=page_num) }}">{{page_num}}</a></li>
+                        {% else %}
+                          <li><a class="pagination-link" href="{{ url_for('home', page=page_num) }}">{{page_num}}</a></li>
+                    
+                        {% endif %} 
+                  
+                  {% else %}    
+                  <li><span class="pagination-ellipsis">&hellip;</span></li>
+                      </ul>
+                  {% endif %}
+                {% endfor %}      
+              </nav>
           </div>
 
           <div class="tile is-4 is-parent" >
@@ -89,7 +113,7 @@
                           <div class="content">
                               <div>
                                   <small><strong>{{ post.author.username }}</strong></small><br>
-                                  <a><small></small>Posts</a><br>
+                                  <small>{{post.author.count_posts()}}<a href="#">Posts</a></small><br>
                                   <a><small></small> Cursos</a><br>
                               </div>
                               <div class="content mt-2">
