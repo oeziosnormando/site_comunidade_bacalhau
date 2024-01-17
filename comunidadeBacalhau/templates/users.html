@@ -5,7 +5,7 @@
         <div class="hero-body">
             <div class="container">
                 <h5 class="title is-5">Olá, {{ current_user.username }}!</h5>
-                <h4 class="title is-4">Comunidade Bacalhau</h4>
+                <h4 class="title is-4">Usuários da Comunidade Bacalhau</h4>
                 {% for user in list_users %}
                     <article class="media">
                         <div class="media-left">
@@ -19,13 +19,14 @@
                         </div>
                         <div class="media-content">
                             <div class="content">
-                                <p>
-                                    <strong>{{ user.username }}</strong> <small><strong>{{user.email }}</strong></small><br>
-                                    <a><small>{{ user.count_courses() }}</small> courses</a> <br>
-                                    <a><small>{{ user.count_posts() }}</small> posts</a><br>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa
-                                    fringilla egestas. Nullam condimentum luctus turpis.
-                                </p>
+                                <small><strong>{{ user.username }} | {{user.email }}</strong></small><br>
+                                <div class="buttons are-small ">
+                                    <a><button class="m-1 button is-primary">{{ user.count_courses() }} Cursos</button></a>
+                                    <a><button class="m-1 button is-primary">{{ user.count_posts() }} Posts</button></a>
+
+                                    <p> Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aenean efficitur sit amet massa
+                                    fringilla egestas. Nullam condimentum luctus turpis.</p>
+                                </div>
                             </div>
                             <nav class="level is-mobile">
                                 <div class="level-left">

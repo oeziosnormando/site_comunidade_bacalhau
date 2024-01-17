@@ -1,11 +1,11 @@
 
 {% extends 'base.html' %}
 
-
 {% block body %}
 <div class="hero">
     <div class="hero-body">
         <div class="container box">
+          <h2 class="subtitle">Perfil</h2>
             <div class="media-content">
               <article class="media">
                   <figure class="media-left">
@@ -22,12 +22,13 @@
                 <div class="columns">
                     <div class="column">
                         <div class="buttons are-small mt-5">
-                            <a href="{{url_for('courses')}}"><button class=" m-1 button is-link is-light is-outlined">
-                              {{current_user.count_courses()}}</button>Cursos</a>
-                            <a href="{{url_for('create_post')}}"> <button class=" m-1 button is-link is-light is-outlined">
-                              {{current_user.count_posts()}}</button>Posts</a>
-                            <a href="{{url_for('edit_profile')}}"> <button class=" m-1 button is-link is-light is-outlined">
-                              Editar perfil</button></a>
+                            <a href="{{url_for('courses')}}"><button class=" m-1 button is-primary">
+                              {{current_user.count_courses()}} Cursos</button></a>
+                            <a href="{{url_for('create_post')}}"> <button class=" m-1 button is-primary">
+                              {{current_user.count_posts()}} Posts</button></a>
+                              
+                            <a href="{{url_for('edit_profile' )}}"> <button class=" js-modal-trigger m-1 button is-warning" 
+                              data-target="modal-edit-profile">Editar perfil</button></a>
                         </div>
                     </div>
                 </div>
@@ -53,17 +54,7 @@
         </div>
     </div>
 </div>
-<!--
-<script>
-  const fileInput = document.querySelector('file-js-example input[type=file]');
-  fileInput.onchange = () => {
-    if (fileInput.files.length > 0) {
-      const fileName = document.querySelector('file-js-example .file-name');
-      fileName.textContent = fileInput.files[0].name;
-    }
-  }
-</script>
--->
-{% block edit_profile %}{% endblock edit_profile %}
+
+{% include 'edit_profile.html'%} 
 
 {% endblock body %}

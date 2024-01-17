@@ -21,7 +21,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
 });
 
-// modal
+
+// modal funcionalidade editar e excluir posts
 document.addEventListener('DOMContentLoaded', () => {
   // Functions to open and close a modal
   function openModal($el) {

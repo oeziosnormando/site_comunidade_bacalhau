@@ -7,7 +7,7 @@
         <p class="subtitle is-5 mt-3">Visualizar post</p>
         
         {% if current_user == post.author %}
-        <button class="js-modal-trigger is-warning button is-small mb-1" data-target="modal-js-example">
+        <button class="js-modal-trigger is-warning button is-small mb-1" data-target="modal-edit-post">
             Editar
         </button>
         <button class="js-modal-trigger is-danger button is-small mb-1" data-target="modal-js-delete">
@@ -66,12 +66,9 @@
         </div>
     </div>
 </div>
-
-{% block form_edit %}
     
-    {% include 'edit_post.html' %}
-    {% include 'delete_post.html' %}
+{% include 'edit_post.html' %}
 
-{% endblock form_edit %}
+{% include 'delete_post.html' %}
 
 {% endblock body %}

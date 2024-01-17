@@ -7,58 +7,58 @@
         <div class="container">
             <h1 class="title has-text-grey">Comunidade Bacalhau</h1>
             <div class="columns">
-              <div class="column is-narrow">
-                <div class="box" style="width: 200px;">
-                   <p class="subtitle is-6">Últimas postagens</p>
-                      <article class="media">
-                          <div class="media-content">
-                              <div class="content">
-                                  <div>
-                                      <a><small></small> courses</a><br>
-                                      <a><small></small> posts</a><br>
-                                  </div>
-                                  <div class="content mt-2">
-                                    <p class="subtitle mb-2 is-6"></p>
-                                    <a>@comunidade bacalhau.</a><br>
-                                    <a href="https://bulma.io">#Bulma</a> <a href="https://flask.palletsprojects.com/en/3.0.x/">#flask</a>
-                                    <a href="https://www.python.org/">#python</a><br>
-                                    <time datetime="2016-1-1"></time>
-                                  </div>
-                              </div>
-                              <nav class="level is-mobile">
-                                  <div class="level-left">
-                                      <a class="level-item" aria-label="reply">
-                                          <span class="icon is-small"> <i class="fas fa-reply"></i> </span>
-                                      </a>
-                                      <a class="level-item" aria-label="retweet">
-                                          <span class="icon is-small"> <i class="fas fa-retweet"></i> </span>
-                                      </a>
-                                      <a class="level-item" aria-label="like">
-                                          <span class="icon is-small"> <i class="fas fa-heart"></i> </span>
-                                      </a>
-                                  </div>
-                              </nav>
-                          </div>
-                      </article>
-                </div>
-              </div>
-              <div class="column">
-                <div class="box">
-                  <p class="title is-5">Crie um Post! {{ current_user.username }}</p>
-                  <p class="subtitle is-6">Comunidade de tecnologia dedicada a promover o aprendizado e a colaboração entre profissionais e estudantes de tecnologia.</p>
-                  <article class="media">
-                      <figure class="media-left">
-                        <p class="image is-64x64">
-                          <img src=" {{ url_for('static', filename='fotos_perfil/{}'.format(current_user.profile_picture)) }} ">
-                        </p>
-                      </figure>
-                      <div class="media-content">
-                          <form method="POST" action="">
-                              <figure class="media-left">
-                                    <p class="image is-64x64">
-                                      <img src="{{profile_picture}}">
-                                    </p>
-                              </figure>
+            <div class="column is-narrow">
+            <div class="box" style="width: 200px;">
+                <p class="subtitle is-6">Últimas postagens</p>
+                    <article class="media">
+                        <div class="media-content">
+                            <div class="content">
+                                <div>
+                                    <a><small></small> courses</a><br>
+                                    <a><small></small> posts</a><br>
+                                </div>
+                                <div class="content mt-2">
+                                <p class="subtitle mb-2 is-6"></p>
+                                <a>@comunidade bacalhau.</a><br>
+                                <a href="https://bulma.io">#Bulma</a> <a href="https://flask.palletsprojects.com/en/3.0.x/">#flask</a>
+                                <a href="https://www.python.org/">#python</a><br>
+                                <time datetime="2016-1-1"></time>
+                                </div>
+                            </div>
+                            <nav class="level is-mobile">
+                                <div class="level-left">
+                                    <a class="level-item" aria-label="reply">
+                                        <span class="icon is-small"> <i class="fas fa-reply"></i> </span>
+                                    </a>
+                                    <a class="level-item" aria-label="retweet">
+                                        <span class="icon is-small"> <i class="fas fa-retweet"></i> </span>
+                                    </a>
+                                    <a class="level-item" aria-label="like">
+                                        <span class="icon is-small"> <i class="fas fa-heart"></i> </span>
+                                    </a>
+                                </div>
+                            </nav>
+                        </div>
+                    </article>
+            </div>
+            </div>
+            <div class="column">
+            <div class="box">
+                <p class="title is-5">Crie um Post! {{ current_user.username }}</p>
+                <p class="subtitle is-6">Comunidade de tecnologia dedicada a promover o aprendizado e a colaboração entre profissionais e estudantes de tecnologia.</p>
+                <article class="media">
+                    <figure class="media-left">
+                    <p class="image is-64x64">
+                        <img src=" {{ url_for('static', filename='fotos_perfil/{}'.format(current_user.profile_picture)) }} ">
+                    </p>
+                    </figure>
+                    <div class="media-content">
+                        <form method="POST" action="">
+                            <figure class="media-left">
+                                <p class="image is-64x64">
+                                    <img src="{{profile_picture}}">
+                                </p>
+                            </figure>
                             {{ form_post.csrf_token }}
                             <div class="field">
                                 <div class="control ">
@@ -71,7 +71,7 @@
                                             {% endfor %}
                                         </div>
                                     {% else %}
-                                        {{ form_post.title(class='input is-info', placeholder='Titulo do texto') }}
+                                        {{ form_post.title(class='input is-primary', placeholder='Titulo do texto') }}
                                     {% endif %}
                                 </div>
                             </div>
@@ -79,25 +79,25 @@
                                 <div class="control ">
                                     {{ form_post.content.label(class='control has-text-grey') }}
                                     {% if form_post.content.errors %}
-                                        {{ form_post.content(class='control is-link') }}
+                                        {{ form_post.content(class='control is-primary') }}
                                     <div class="help is-danger">
                                         {% for erro in form_post.content.errors %}
                                             {{ erro }}
                                         {% endfor %}
                                     </div>
                                     {% else %}
-                                        {{ form_post.content(class='textarea is-small is-link', placeholder='Escreva o seu post...') }}
+                                        {{ form_post.content(class='textarea is-small is-primary', placeholder='Escreva o seu post...') }}
                                     {% endif %}
                                 </div>
                             </div>
                             <p class="control">
-                            {{ form_post.button_submit_create_post(class="button is-link is-outline mt-2") }}
+                            {{ form_post.button_submit_create_post(class="button is-primary mt-2") }}
                             </p>
-                          </form>
-                      </div>
-                  </article>
-                </div>
-              </div>
+                        </form>
+                    </div>
+                </article>
+            </div>
+            </div>
             </div>
         </div>
     </div>

@@ -76,13 +76,6 @@ def users():
     return render_template("users.html", list_users=list_users, profile_picture=profile_picture)
 
 
-@app.route("/profile/")
-@login_required
-def profile():
-    profile_picture = url_for(
-        'static', filename='fotos_perfil/{}'.format(current_user.profile_picture))
-    return render_template('profile.html', profile_picture=profile_picture)
-
 
 # function save_picture to save the profile picture
 # thumbnail to resize the image
@@ -102,6 +95,18 @@ def save_picture(form_picture):
     return picture_fn
 
 
+
+@app.route("/profile/")
+@login_required
+def profile():
+    form_edit_profile = FormEditprofile()
+    profile_picture = url_for(
+        'static', filename='fotos_perfil/{}'.format(current_user.profile_picture))
+    
+    return render_template("profile.html", profile_picture=profile_picture, form_edit_profile=form_edit_profile)
+
+
+    
 @app.route("/edit_profile/", methods=["GET", "POST"])
 @login_required
 def edit_profile():
@@ -111,8 +116,7 @@ def edit_profile():
         current_user.email = form_edit_profile.email.data
         # fazendo o upload do foto-perfil
         if form_edit_profile.profile_picture.data:
-            profile_picture = save_picture(
-                form_edit_profile.profile_picture.data)
+            profile_picture = save_picture(form_edit_profile.profile_picture.data)
             current_user.profile_picture = profile_picture
         # atualizando os dados no banco de dados
         database.session.commit()
@@ -122,9 +126,10 @@ def edit_profile():
     elif request.method == 'GET':
         form_edit_profile.username.data = current_user.username
         form_edit_profile.email.data = current_user.email
-    profile_picture = url_for(
+        profile_picture = url_for(
         'static', filename='fotos_perfil/{}'.format(current_user.profile_picture))
     return render_template("edit_profile.html", form_edit_profile=form_edit_profile, profile_picture=profile_picture)
+
 
 
 # criar post
@@ -142,7 +147,7 @@ def create_post():
     return render_template("create_post.html", form_post=form_post)
 
 
-# exibir o post
+# exibir  ou editar o post
 @app.route("/post/<int:post_id>", methods=["GET", "POST"])
 @login_required
 def display_post(post_id):

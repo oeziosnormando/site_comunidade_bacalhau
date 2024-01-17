@@ -20,7 +20,7 @@
                     <input class="input" type="text" name="q" placeholder="Postagens...">
                   </div>
                   <div class="control">
-                    <a class="button is-success" type="submit">
+                    <a class="button is-primary" type="submit">
                       <i class="fa fa-search"> Buscar</i>
                     </a>
                   </div>
@@ -67,12 +67,12 @@
                   <footer class="card-footer">
                     <p class="card-footer-item">
                       <span>
-                        Share on <a href="#">WhatsApp</a>
+                        Share on <a href="#" class="has-text-link-dark">WhatsApp</a>
                       </span>
                     </p>
                     <p class="card-footer-item">
                       <span>
-                        Share on <a href="#">Facebook</a>
+                        Share on <a href="#" class="has-text-link-dark">Facebook</a>
                       </span>
                     </p>
                   </footer>
@@ -110,11 +110,11 @@
                           </figure>
                       </div>
                       <div class="media-content">
+                        <small><strong>{{ post.author.username }}</strong></small><br>
                           <div class="content">
-                              <div>
-                                  <small><strong>{{ post.author.username }}</strong></small><br>
-                                  <small>{{post.author.count_posts()}}<a href="#">Posts</a></small><br>
-                                  <a><small></small> Cursos</a><br>
+                              <div class="buttons are-small">
+                                <a><button class="m-1 button is-primary">{{ post.author.count_posts() }} Posts</button></a>
+                                <a><button class="m-1 button is-primary">{{ post.author.count_courses() }} Cursos</button></a>
                               </div>
                               <div class="content mt-2">
                                   <!--link display post visualizar o post-->

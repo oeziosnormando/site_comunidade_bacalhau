@@ -73,13 +73,13 @@
                 </a>
               </div>
             </div>
-            <a class="navbar-item has-text-link" href="{{ url_for('profile') }}">
+            <a class="navbar-item has-text-primary" href="{{ url_for('profile') }}">
                   Profile
             </a>
             <a class="navbar-item has-text-danger-dark " href="{{ url_for('logout') }}">
                   Logout
             </a>
-            {% else %}
+          {% else %}
             <div class="navbar-item">
               <div class="buttons">
                 <a class="button" href="{{ url_for('signup') }}">
@@ -90,7 +90,7 @@
                 </a>
               </div>
             </div>
-            {% endif%}
+          {% endif%}
           </div>
         </div>
       </div>
@@ -115,9 +115,13 @@
 <footer class="footer">
     <div class="content has-text-centered">
       <p>
-        <strong>Comunidade Bacalhau</strong> by <a href="https://github.com/oeziosnormando">Oézios Normando</a>.<br>
-        <a href="https://oeziosnormando.github.io/projetoCurriculoOezios/">Curriculum Vitae</a>. O webSite contém
-        licença <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
+        <strong>Comunidade Bacalhau</strong> by 
+        <a href="https://github.com/oeziosnormando" class="is-large" target="_blank">Oézios Normando
+          <span class="icon is-medium">
+            <i class="fab fa-github">.</i>
+          </span>
+        </a>
+        <br>O webSite contém licença <a href="http://creativecommons.org/licenses/by-nc-sa/4.0/">CC BY NC SA 4.0</a>.
       </p>
     </div>
   </footer>
