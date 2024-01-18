@@ -15,14 +15,27 @@
             </div>
             <div class="column is-4">
               <form action="" method="get">
+                {{ form_search.csrf_token }}
                 <div class="field has-addons">
                   <div class="control">
-                    <input class="input" type="text" name="q" placeholder="Postagens...">
+                    {% if form_search.search.errors %}
+                      {{ form_search.search(class='input is-primary') }}
+                      <div class="help is-danger">
+                        {% for erro in form_search.search.errors %}
+                          {{erro}}
+                        {% endfor %}
+                      </div>
+                    {% else %}
+                      {{ form_search.search(class='input is-primary type="text" name="q" placeholder="Postagens...') }}
+                    {% endif %}
                   </div>
                   <div class="control">
-                    <a class="button is-primary" type="submit">
-                      <i class="fa fa-search"> Buscar</i>
-                    </a>
+                    {{ form_search.button_submit_search(class="button is-primary ") }}
+                    {% if form_search.button_submit_search.errors %}
+                      {% for erro in form_search.button_submit_search.errors %}
+                        {{erro}}
+                      {% endfor %}
+                    {% endif %}
                   </div>
                 </div>
               </form>

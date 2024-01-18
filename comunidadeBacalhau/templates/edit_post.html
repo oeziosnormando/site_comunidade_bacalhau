@@ -31,7 +31,7 @@
                                         {% endfor %}
                                     </div>
                                 {% else %}
-                                    {{ form_edit.title(class='input is-info', placeholder='Titulo do texto') }}
+                                    {{ form_edit.title(class='input is-primary', placeholder='Titulo do texto') }}
                                 {% endif %}
                             </div>
                         </div>
@@ -39,18 +39,18 @@
                             <div class="control ">
                                 {{ form_edit.content.label(class='control has-text-grey') }}
                                 {% if form_edit.content.errors %}
-                                    {{ form_edit.content(class='control is-link') }}
+                                    {{ form_edit.content(class='control is-primary') }}
                                 <div class="help is-danger">
                                     {% for erro in form_edit.content.errors %}
                                         {{ erro }}
                                     {% endfor %}
                                 </div>
                                 {% else %}
-                                    {{ form_edit.content(class='textarea is-small is-link', placeholder='Escreva o seu post...') }}
+                                    {{ form_edit.content(class='textarea is-small is-primary', placeholder='Escreva o seu post...') }}
                                 {% endif %}
                             </div>
                         </div>
-                        <span>{{ form_edit.button_submit_edit_post(class="button is-success ") }}</span>
+                        <span>{{ form_edit.button_submit_edit_post(class="button is-primary ") }}</span>
                     </form>
                 </div>
             </article>

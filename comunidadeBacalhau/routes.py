@@ -53,10 +53,12 @@ def signup():
 @app.route("/")
 @app.route("/home/")
 def home():
+    form_search = FormSearch()
     page = request.args.get('page', 1, type=int)
     posts = Post.query.order_by(Post.id.desc()).paginate(page=page, per_page=2)
     
-    return render_template("home.html", posts=posts)
+    return render_template("home.html", posts=posts, form_search=form_search)
+
 
 
 @app.route("/logout/")
@@ -170,6 +172,7 @@ def display_post(post_id):
     
     
 @app.route("/results/<string:search>", methods=["GET", "POST"])
+@login_required
 def result(search):
     posts = Post.query.filter(Post.title.contains(search) | Post.content.contains(search)).all()
     for_search = FormSearch()
